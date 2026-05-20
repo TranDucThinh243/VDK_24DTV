@@ -12,7 +12,7 @@
 
 /* Includes ----------------------------------------------------------- */
 #include <stdint.h>
-#include "stm32f4xx_hal.h"
+#include "stm32f1xx_hal.h"
 
 /* Public defines ----------------------------------------------------- */
 #ifndef BSP_I2C_TIMEOUT_MS
