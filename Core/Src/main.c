@@ -21,6 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "ssd1306_tests.h"
 
 /* USER CODE END Includes */
 
@@ -102,6 +103,7 @@ int main(void)
   MX_TIM2_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  ssd1306_TestAll();
 
   /* USER CODE END 2 */
 
