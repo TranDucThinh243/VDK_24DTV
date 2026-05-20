@@ -1,0 +1,20 @@
+# Các thư mục chứa file biên dịch (mã máy, file thực thi)
+Debug/
+Release/
+
+# Các file cấu hình cá nhân của IDE (tự sinh lại khi mở trên máy khác)
+.settings/
+
+# File tạm và file log của hệ thống biên dịch
+*.su
+*.o
+*.d
+*.crf
+*.elf
+*.bin
+*.hex
+*.map
+*.list
+
+# Các file tạm của STM32CubeMX (trình cấu hình chip)
+.mxproject
