@@ -62,7 +62,8 @@ static void MX_I2C1_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
-
+extern void App_Init(void);
+extern void App_Loop(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -104,7 +105,8 @@ int main(void)
   MX_TIM2_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  ssd1306_TestAll();
+  App_Init();
+  // ssd1306_TestAll();
 
   /* USER CODE END 2 */
 
@@ -115,6 +117,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    App_Loop();
   }
   /* USER CODE END 3 */
 }
