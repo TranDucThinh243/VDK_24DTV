@@ -21,5 +21,6 @@ typedef enum {
 void bsp_gpio_pin_write(GPIO_TypeDef *port, uint16_t pin, bsp_gpio_state_t state);
 void bsp_gpio_pin_toggle(GPIO_TypeDef *port, uint16_t pin);
 bsp_gpio_state_t bsp_gpio_pin_read(GPIO_TypeDef *port, uint16_t pin);
+void bsp_gpio_init(void);
 
 #endif /* BSP_GPIO_H */
