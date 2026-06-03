@@ -36,7 +36,11 @@ typedef enum {
  */
 typedef struct {
     uint16_t raw_adc;
-    float voltage;
+    float voltage_pa0;
+    float voltage_sensor;
+    uint32_t ppm_est;
+    uint32_t baseline_ppm_est;
+    uint32_t delta_ppm;
     air_quality_level_t level;
     uint8_t sensor_ok;
 } air_quality_data_t;

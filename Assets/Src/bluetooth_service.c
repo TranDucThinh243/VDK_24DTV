@@ -57,13 +57,13 @@ bluetooth_service_status_t bluetooth_service_send_air_quality(const air_quality_
             break;
     }
 
-    /* Format text payload: AIR:GOOD,MQ:1.48,RAW:1840 */
+    /* Format text payload: AIR:WARNING,PPM:4500,DLT:1800,VAO:2.15 */
     /* Use integer math to safely print floats to avoid soft-float printf issues */
-    int volts_int = (int)p_data->voltage;
-    int volts_frac = (int)(p_data->voltage * 100.0f) % 100;
+    int volts_int = (int)p_data->voltage_sensor;
+    int volts_frac = (int)(p_data->voltage_sensor * 100.0f) % 100;
 
-    snprintf(buf, sizeof(buf), "AIR:%s,MQ:%d.%02d,RAW:%u\r\n", 
-             lvl_str, volts_int, volts_frac, p_data->raw_adc);
+    snprintf(buf, sizeof(buf), "AIR:%s,PPM:%lu,DLT:%lu,VAO:%d.%02d\r\n", 
+             lvl_str, (unsigned long)p_data->ppm_est, (unsigned long)p_data->delta_ppm, volts_int, volts_frac);
 
     if (hc05_send_string(buf) != HC05_OK)
     {

@@ -13,6 +13,7 @@ extern "C" {
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <stddef.h>
 
 /**
  * @brief SSD1306 font structure

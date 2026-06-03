@@ -15,7 +15,7 @@
 #include "bsp_time.h"
 
 /* Task execution intervals in milliseconds */
-#define TASK_INTERVAL_AIR_QUALITY_MS    1000U
+#define TASK_INTERVAL_AIR_QUALITY_MS    100U
 #define TASK_INTERVAL_DISPLAY_MS        500U
 #define TASK_INTERVAL_BLUETOOTH_MS      1000U
 

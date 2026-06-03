@@ -140,28 +140,35 @@ static void draw_air_screen(const display_service_data_t *p_data)
         return;
     }
 
-    /* Print voltage safely using integer math to avoid linker issues with soft-float %f */
-    snprintf(buf, sizeof(buf), "Volts: %d.%02dV", 
-             (int)p_data->air_data.voltage, 
-             (int)(p_data->air_data.voltage * 100) % 100);
-    
-    ssd1306_set_cursor(5, 25);
-    ssd1306_write_string(buf, &Font_7x10, SSD1306_COLOR_WHITE);
-
-    /* Print level */
-    ssd1306_set_cursor(5, 45);
+    const char *sts_str = "UNKNOWN";
     switch (p_data->air_data.level)
     {
-        case AIR_QUALITY_GOOD:
-            ssd1306_write_string("LVL: GOOD", &Font_7x10, SSD1306_COLOR_WHITE);
-            break;
-        case AIR_QUALITY_WARNING:
-            ssd1306_write_string("LVL: WARN", &Font_7x10, SSD1306_COLOR_WHITE);
-            break;
-        case AIR_QUALITY_DANGER:
-            ssd1306_write_string("LVL: DANGER", &Font_7x10, SSD1306_COLOR_WHITE);
-            break;
+        case AIR_QUALITY_GOOD:    sts_str = "NORMAL"; break;
+        case AIR_QUALITY_WARNING: sts_str = "WARNING"; break;
+        case AIR_QUALITY_DANGER:  sts_str = "DANGER"; break;
     }
+
+    /* Line 2: Status */
+    snprintf(buf, sizeof(buf), "Sts: %s", sts_str);
+    ssd1306_set_cursor(5, 17);
+    ssd1306_write_string(buf, &Font_7x10, SSD1306_COLOR_WHITE);
+
+    /* Line 3: PPM */
+    snprintf(buf, sizeof(buf), "PPM: %lu", (unsigned long)p_data->air_data.ppm_est);
+    ssd1306_set_cursor(5, 29);
+    ssd1306_write_string(buf, &Font_7x10, SSD1306_COLOR_WHITE);
+
+    /* Line 4: Delta */
+    snprintf(buf, sizeof(buf), "Dlt: +%lu", (unsigned long)p_data->air_data.delta_ppm);
+    ssd1306_set_cursor(5, 41);
+    ssd1306_write_string(buf, &Font_7x10, SSD1306_COLOR_WHITE);
+
+    /* Line 5: Vao */
+    snprintf(buf, sizeof(buf), "Vao: %d.%02d V", 
+             (int)p_data->air_data.voltage_sensor, 
+             (int)(p_data->air_data.voltage_sensor * 100.0f) % 100);
+    ssd1306_set_cursor(5, 53);
+    ssd1306_write_string(buf, &Font_7x10, SSD1306_COLOR_WHITE);
 }
 
 static void draw_bluetooth_screen(const display_service_data_t *p_data)
