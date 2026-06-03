@@ -1,6 +1,7 @@
 # Các thư mục chứa file biên dịch (mã máy, file thực thi)
 Debug/
 Release/
+.agents/
 
 # Các file cấu hình cá nhân của IDE (tự sinh lại khi mở trên máy khác)
 .settings/
@@ -15,6 +16,8 @@ Release/
 *.hex
 *.map
 *.list
+*.md
+.vscode/
 
 # Các file tạm của STM32CubeMX (trình cấu hình chip)
 .mxproject
